@@ -26,12 +26,18 @@ export USE_CCACHE=1
 msg="docker_entrypoint: Creating user UID/GID [$USER_ID/$GROUP_ID]" && echo $msg
 # mkdir -p /home/$USERNAME
 #addgroup -g $GROUP_ID $GROUPNAME
-adduser -D -h /home/$USERNAME -u $USER_ID -G $GROUPNAME -s /bin/sh $USERNAME
+# QNAP specific
+adduser -D -h /home/$USERNAME -u $USER_ID -g 1000 -s /bin/sh $USERNAME
+#adduser -D -h /home/$USERNAME -u $USER_ID -G $GROUPNAME -s /bin/sh $USERNAME
 # chown $USER_ID:$GROUP_ID /home/$USERNAME
+passwd -u $USERNAME
 echo "$msg - done"
 
 # Enable sudo
 echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" | tee -a /etc/sudoers
+
+#/usr/bin/ssh-keygen -A
+/usr/sbin/sshd -D &
 
 # msg="docker_entrypoint: Creating /tmp/ccache and /$USERNAME directory" && echo $msg
 # mkdir -p /tmp/ccache /$USERNAME

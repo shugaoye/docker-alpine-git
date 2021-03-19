@@ -1,5 +1,5 @@
 DOCKER = docker
-IMAGE = shugaoye/git:latest
+IMAGE = shugaoye/docker-alpine-git:latest
 VOL1 ?= $(HOME)/vol1
 VOL2 ?= $(HOME)/.ccache
 
