@@ -21,7 +21,7 @@ RUN export LC_ALL=C
 
 EXPOSE 22
 
-COPY utils/ssh_config/ssh_* /etc/ssh
+COPY utils/ssh_config/ssh_* /etc/ssh/
 #CMD    ["/usr/sbin/sshd", "-D"]
 
 #USER devel
