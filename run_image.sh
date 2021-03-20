@@ -16,6 +16,7 @@ vol1="$(cd ..; pwd)"
 docker run -ti --rm \
   -v ${vol1}:/home/${USERNAME} \
   -p 22:22 \
+  -p 8388:8388 \
   -e USER_ID=${USER_ID} -e GROUP_ID=${GROUP_ID} \
   -e USERNAME=${USERNAME} -e GROUPNAME=${GROUPNAME} \
   ${IMAGE} /bin/sh

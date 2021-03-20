@@ -36,7 +36,7 @@ echo "$msg - done"
 # Enable sudo
 echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" | tee -a /etc/sudoers
 
-chmod og-r /etc/ssh/*_key
+chmod og-rwx /etc/ssh/*_key
 #/usr/bin/ssh-keygen -A
 /usr/sbin/sshd -D &
 
